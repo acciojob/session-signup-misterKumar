@@ -1,27 +1,31 @@
-//your JS code here. If required.
-const form = document.getElementsById("signup-form");
+document.addEventListener("DOMContentLoaded", function() {
+    const signUpForm = document.getElementById("signup-form");
+	 
 
+    signUpForm.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-form.addEventListner("submit",(event)=>{
-	event.preventDefault();
-	const name = document.getElementsById("name").value;
-	const email = document.getElementsById("email").value;
-	const password = document.getElementsById("password").value;
-	const confirmpassword = document.getElementsById("confirm-password").value;
-	if(password === confirmpassword){
-		const testUser = {name};
-		const useremail = {email};
-		const userpassword = {password};
-        localStorage.setItem("name", JSON.stringify(username));
-        localStorage.setItem("email", JSON.stringify(useremail));
-        localStorage.setItem("password", JSON.stringify(userpassword));
+        // Get form values
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirm-password").value;
 
-		sessionStorage.setItem("name", name);
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        // Save data in session storage
+        sessionStorage.setItem("name", name);
         sessionStorage.setItem("email", email);
         sessionStorage.setItem("password", password);
-		
-		alert("Sign up successful!");
-	} else{
-		alert{"Passwords do not match"};
-	};
+
+        // Show success message
+        alert("Sign up successful!");
+
+        // Clear form fields
+        signUpForm.reset();
+    });
 });
