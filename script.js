@@ -1,18 +1,27 @@
 //your JS code here. If required.
-const submitBtn = document.getElementById("submit");
+const form = document.getElementsById("signup-form");
 
-submitBtn.addEventListener('click',()=>{
-const name = document.querySelector('#name').value;
-const email = document.getElementById("email").value;
-const password = document.getElementById("password").value;
-const confirmPassword = document.getElementById("confirm-password").value;
-	if(password === confirmPassword){
-		window.sessionStorage.setItem("name",name);
-		window.sessionStorage.setItem("email",email);
-		window.sessionStorage.setItem("password",password);
-		alert("Sign up successful!.")	
-	}
-	else{
-		alert("Passwords do not match");
-	}
-})
+
+form.addEventListner("submit",(event)=>{
+	event.preventDefault();
+	const name = document.getElementsById("name").value;
+	const email = document.getElementsById("email").value;
+	const password = document.getElementsById("password").value;
+	const confirmpassword = document.getElementsById("confirm-password").value;
+	if(password === confirmpassword){
+		const testUser = {name};
+		const useremail = {email};
+		const userpassword = {password};
+        localStorage.setItem("name", JSON.stringify(username));
+        localStorage.setItem("email", JSON.stringify(useremail));
+        localStorage.setItem("password", JSON.stringify(userpassword));
+
+		sessionStorage.setItem("name", name);
+        sessionStorage.setItem("email", email);
+        sessionStorage.setItem("password", password);
+		
+		alert("Sign up successful!");
+	} else{
+		alert{"Passwords do not match"};
+	};
+});
